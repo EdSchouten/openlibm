@@ -7,6 +7,18 @@ env:
     - TARGET=host
     - TARGET=arm32
 matrix:
+    include:
+        - compiler: clang
+          os: linux
+          addons:
+              apt:
+                  sources:
+                      - ubuntu-toolchain-r-test
+                      - llvm-toolchain-precise-3.7
+                  packages:
+                      - clang-3.7
+          env: CC=clang-3.7 CXX=clang++-3.7 TARGET=host
+
     exclude:
         - os: osx
           env: TARGET=arm32
